@@ -1,0 +1,2035 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Café Aroma Vivo – El sabor que despierta tus sentidos</title>
+  <meta name="description" content="Cafetería artesanal en Ciudad de México. Café espresso, cappuccino, frappés, postres caseros y más. Ven a vivir la experiencia Aroma Vivo." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ===========================
+       CSS VARIABLES & RESET
+    =========================== */
+    :root {
+      --espresso:   #2C1A0E;
+      --dark-brown: #3D2314;
+      --mid-brown:  #6B3D2E;
+      --caramel:    #A0522D;
+      --amber:      #C87941;
+      --orange:     #E8834A;
+      --peach:      #F2A96E;
+      --cream:      #FDF6EC;
+      --beige:      #F5E6CC;
+      --warm-white: #FFFAF3;
+      --text-dark:  #1E1007;
+      --text-mid:   #5A3820;
+      --text-light: #8B6347;
+      --shadow-warm: 0 8px 40px rgba(44,26,14,.15);
+      --shadow-card: 0 4px 24px rgba(44,26,14,.12);
+      --radius-lg: 20px;
+      --radius-xl: 32px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--warm-white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ===========================
+       TYPOGRAPHY HELPERS
+    =========================== */
+    .serif { font-family: 'Playfair Display', serif; }
+    .script { font-family: 'Caveat', cursive; }
+
+    .section-tag {
+      display: inline-block;
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      color: var(--orange);
+      letter-spacing: .04em;
+      margin-bottom: .5rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--espresso);
+    }
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* ===========================
+       SCROLL REVEAL ANIMATION
+    =========================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left  { opacity: 0; transform: translateX(-40px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+    .reveal-right { opacity: 0; transform: translateX(40px);  transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+    .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* delay helpers */
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+    .d4 { transition-delay: .4s; }
+    .d5 { transition-delay: .5s; }
+
+    /* ===========================
+       BUTTONS
+    =========================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .85rem 2rem;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: all .3s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(232,131,74,.45);
+    }
+    .btn-primary:hover {
+      background: var(--caramel);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(232,131,74,.5);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--espresso);
+      border: 2px solid var(--espresso);
+    }
+    .btn-outline:hover {
+      background: var(--espresso);
+      color: var(--cream);
+      transform: translateY(-2px);
+    }
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(37,211,102,.4);
+    }
+    .btn-whatsapp:hover {
+      background: #1EBE58;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37,211,102,.5);
+    }
+
+    /* ===========================
+       NAVBAR
+    =========================== */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1.1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .35s, box-shadow .35s, padding .35s;
+    }
+    #navbar.scrolled {
+      background: rgba(253,246,236,.96);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 2px 20px rgba(44,26,14,.10);
+      padding: .75rem 2rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .nav-logo .logo-icon {
+      width: 42px; height: 42px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      color: #fff;
+      transition: transform .3s;
+    }
+    .nav-logo:hover .logo-icon { transform: rotate(-12deg) scale(1.05); }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: var(--espresso);
+      line-height: 1;
+    }
+    .nav-logo-text span {
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: var(--orange);
+      display: block;
+      font-weight: 500;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      position: relative;
+      transition: color .2s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background: var(--orange);
+      border-radius: 2px;
+      transition: width .3s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta { display: flex; align-items: center; gap: .75rem; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: .5rem;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--espresso);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--cream);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      transform: translateX(100%);
+      transition: transform .4s cubic-bezier(.22,1,.36,1);
+    }
+    .mobile-menu.open { transform: none; }
+    .mobile-menu a {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--espresso);
+      transition: color .2s;
+    }
+    .mobile-menu a:hover { color: var(--orange); }
+    .mobile-menu .close-btn {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none; border: none;
+      font-size: 1.8rem;
+      color: var(--espresso);
+      cursor: pointer;
+    }
+
+    /* ===========================
+       HERO SECTION
+    =========================== */
+    #hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--espresso);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(168,82,29,.35) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 80% at 20% 80%, rgba(200,121,65,.2) 0%, transparent 60%);
+      z-index: 0;
+    }
+    /* Coffee ring decoration */
+    .hero-ring {
+      position: absolute;
+      right: -80px; top: 50%;
+      transform: translateY(-50%);
+      width: min(700px, 90vw);
+      height: min(700px, 90vw);
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.06);
+      z-index: 0;
+      animation: spinSlow 60s linear infinite;
+    }
+    .hero-ring::before {
+      content: '';
+      position: absolute;
+      inset: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(232,131,74,.12);
+    }
+    .hero-ring::after {
+      content: '';
+      position: absolute;
+      inset: 80px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.04);
+    }
+    @keyframes spinSlow { to { transform: translateY(-50%) rotate(360deg); } }
+
+    .hero-image-wrapper {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 55%;
+      overflow: hidden;
+    }
+    .hero-image-wrapper img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(.55) saturate(1.1);
+    }
+    .hero-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--espresso) 0%, rgba(44,26,14,.7) 40%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 8rem 2rem 4rem;
+      max-width: 1240px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(232,131,74,.15);
+      border: 1px solid rgba(232,131,74,.3);
+      border-radius: 50px;
+      padding: .35rem 1rem;
+      color: var(--peach);
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.0;
+      max-width: 640px;
+      margin-bottom: .75rem;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--peach);
+    }
+    .hero-slogan {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      color: var(--peach);
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    .hero-desc {
+      max-width: 480px;
+      color: rgba(255,255,255,.75);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-badges {
+      display: flex;
+      gap: 2rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,.1);
+      flex-wrap: wrap;
+    }
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      color: rgba(255,255,255,.8);
+      font-size: .9rem;
+    }
+    .hero-badge .badge-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(232,131,74,.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--peach);
+      font-size: .95rem;
+      flex-shrink: 0;
+    }
+
+    /* Steam animation */
+    .steam-container {
+      position: absolute;
+      bottom: 15%;
+      right: 18%;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .steam {
+      position: absolute;
+      bottom: 0;
+      width: 4px;
+      border-radius: 99px;
+      background: rgba(255,255,255,.25);
+      animation: steamRise 3s ease-in infinite;
+      filter: blur(2px);
+    }
+    .steam:nth-child(1) { left: 0;  height: 40px; animation-delay: 0s; }
+    .steam:nth-child(2) { left: 12px; height: 55px; animation-delay: .7s; }
+    .steam:nth-child(3) { left: 24px; height: 35px; animation-delay: 1.4s; }
+    @keyframes steamRise {
+      0%   { opacity: 0; transform: translateY(0) scaleX(1); }
+      30%  { opacity: .7; }
+      100% { opacity: 0; transform: translateY(-60px) scaleX(1.8); }
+    }
+
+    /* ===========================
+       MARQUEE STRIP
+    =========================== */
+    .marquee-strip {
+      background: var(--orange);
+      padding: .8rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: 0 2.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .9rem;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .marquee-item .dot {
+      width: 5px; height: 5px;
+      background: rgba(255,255,255,.6);
+      border-radius: 50%;
+    }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ===========================
+       ABOUT SECTION
+    =========================== */
+    #about {
+      padding: 6rem 2rem;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-image-stack {
+      position: relative;
+      height: 520px;
+    }
+    .about-img-main {
+      position: absolute;
+      top: 0; left: 0;
+      width: 75%;
+      height: 80%;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-warm);
+    }
+    .about-img-accent {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 55%;
+      height: 55%;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-warm);
+      border: 5px solid var(--warm-white);
+    }
+    .about-badge-float {
+      position: absolute;
+      top: 55%;
+      left: -30px;
+      background: var(--orange);
+      color: #fff;
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.4rem;
+      box-shadow: 0 8px 30px rgba(232,131,74,.4);
+      text-align: center;
+      z-index: 2;
+    }
+    .about-badge-float .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .about-badge-float .label {
+      font-size: .75rem;
+      font-weight: 500;
+      opacity: .9;
+    }
+    .about-content { }
+    .about-features {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .about-feature {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .feature-icon {
+      width: 44px; height: 44px;
+      background: var(--beige);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--caramel);
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      transition: background .2s, color .2s;
+    }
+    .about-feature:hover .feature-icon {
+      background: var(--orange);
+      color: #fff;
+    }
+    .feature-text h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--espresso);
+      margin-bottom: .25rem;
+    }
+    .feature-text p { font-size: .9rem; color: var(--text-light); line-height: 1.6; }
+
+    /* ===========================
+       MENU / PRODUCTS SECTION
+    =========================== */
+    #menu {
+      padding: 6rem 2rem;
+      background: var(--beige);
+      position: relative;
+      overflow: hidden;
+    }
+    #menu::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,131,74,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .menu-inner { max-width: 1240px; margin: 0 auto; }
+    .menu-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .menu-header .section-subtitle { margin: 0 auto; text-align: center; }
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: .5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: .5rem 1.4rem;
+      border-radius: 50px;
+      font-size: .9rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 2px solid var(--beige);
+      background: var(--warm-white);
+      color: var(--text-light);
+      transition: all .25s;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--espresso);
+      color: #fff;
+      border-color: var(--espresso);
+    }
+    /* Featured products (top 3) */
+    .menu-featured {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+      margin-bottom: 1.75rem;
+    }
+    .menu-card {
+      background: var(--warm-white);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: transform .3s, box-shadow .3s;
+      position: relative;
+    }
+    .menu-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(44,26,14,.18);
+    }
+    .menu-card.featured::before {
+      content: '⭐ Favorito';
+      position: absolute;
+      top: 14px; left: 14px;
+      background: var(--orange);
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 600;
+      padding: .3rem .8rem;
+      border-radius: 50px;
+      z-index: 2;
+    }
+    .card-image {
+      height: 200px;
+      overflow: hidden;
+    }
+    .card-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .5s;
+    }
+    .menu-card:hover .card-image img { transform: scale(1.06); }
+    .card-body {
+      padding: 1.4rem 1.5rem 1.6rem;
+    }
+    .card-icon {
+      font-size: 1.5rem;
+      margin-bottom: .5rem;
+    }
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--espresso);
+      margin-bottom: .4rem;
+    }
+    .card-desc {
+      font-size: .88rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .card-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--orange);
+    }
+    .card-add {
+      width: 36px; height: 36px;
+      background: var(--espresso);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, transform .2s;
+    }
+    .card-add:hover { background: var(--orange); transform: scale(1.1); }
+    /* Other products row */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    .menu-item-sm {
+      background: var(--warm-white);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: var(--shadow-card);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .menu-item-sm:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(44,26,14,.13);
+    }
+    .item-emoji {
+      font-size: 2rem;
+      background: var(--beige);
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .item-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: .98rem;
+      font-weight: 700;
+      color: var(--espresso);
+    }
+    .item-info p {
+      font-size: .82rem;
+      color: var(--text-light);
+      margin-top: .15rem;
+    }
+
+    /* ===========================
+       GALLERY SECTION
+    =========================== */
+    #gallery {
+      padding: 6rem 2rem;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .gallery-header { text-align: center; margin-bottom: 3rem; }
+    .gallery-header .section-subtitle { margin: 0 auto; text-align: center; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 240px 240px;
+      gap: 16px;
+    }
+    .gallery-item {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .5s;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(44,26,14,0);
+      display: flex; align-items: center; justify-content: center;
+      transition: background .3s;
+    }
+    .gallery-item:hover .overlay { background: rgba(44,26,14,.35); }
+    .gallery-item .overlay i {
+      color: #fff;
+      font-size: 1.8rem;
+      opacity: 0;
+      transform: scale(.7);
+      transition: opacity .3s, transform .3s;
+    }
+    .gallery-item:hover .overlay i { opacity: 1; transform: scale(1); }
+    .gallery-item:nth-child(1) { grid-row: 1 / 3; }
+    .gallery-item:nth-child(4) { grid-row: 1 / 3; }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(20,10,5,.92);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: var(--radius-lg);
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem; right: 2rem;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      background: none; border: none;
+      transition: transform .2s;
+    }
+    .lightbox-close:hover { transform: rotate(90deg); }
+
+    /* ===========================
+       TESTIMONIALS SECTION
+    =========================== */
+    #testimonials {
+      padding: 6rem 2rem;
+      background: var(--espresso);
+      position: relative;
+      overflow: hidden;
+    }
+    #testimonials::before {
+      content: '"';
+      position: absolute;
+      top: -1rem; left: 5%;
+      font-family: 'Playfair Display', serif;
+      font-size: 20rem;
+      color: rgba(255,255,255,.03);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .testimonials-inner { max-width: 1240px; margin: 0 auto; }
+    .testimonials-inner .section-title { color: #fff; }
+    .testimonials-inner .section-subtitle { color: rgba(255,255,255,.6); }
+    .testimonials-inner .section-tag { color: var(--peach); }
+    .testimonials-header { margin-bottom: 3rem; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .testi-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      transition: background .3s, transform .3s;
+    }
+    .testi-card:hover {
+      background: rgba(255,255,255,.09);
+      transform: translateY(-4px);
+    }
+    .testi-stars {
+      color: #F7C948;
+      font-size: .9rem;
+      margin-bottom: 1rem;
+      letter-spacing: .1em;
+    }
+    .testi-text {
+      font-size: .95rem;
+      color: rgba(255,255,255,.85);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+    }
+    .testi-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(232,131,74,.4);
+    }
+    .testi-name {
+      font-weight: 600;
+      font-size: .9rem;
+      color: #fff;
+    }
+    .testi-role {
+      font-size: .8rem;
+      color: rgba(255,255,255,.5);
+    }
+
+    /* ===========================
+       CONTACT SECTION
+    =========================== */
+    #contact {
+      padding: 6rem 2rem;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info {}
+    .contact-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .contact-card {
+      display: flex;
+      gap: 1.1rem;
+      align-items: flex-start;
+      background: var(--beige);
+      border-radius: var(--radius-lg);
+      padding: 1.3rem 1.5rem;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .contact-card:hover {
+      transform: translateX(6px);
+      box-shadow: var(--shadow-card);
+    }
+    .contact-card-icon {
+      width: 46px; height: 46px;
+      background: var(--orange);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-card-info h4 {
+      font-weight: 600;
+      font-size: .95rem;
+      color: var(--espresso);
+      margin-bottom: .25rem;
+    }
+    .contact-card-info p, .contact-card-info a {
+      font-size: .9rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .contact-card-info a:hover { color: var(--orange); }
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .88rem;
+    }
+    .schedule-table tr:not(:last-child) td { padding-bottom: .4rem; }
+    .schedule-table .day { color: var(--espresso); font-weight: 500; }
+    .schedule-table .time { color: var(--text-light); text-align: right; }
+    .social-row {
+      display: flex;
+      gap: .75rem;
+      margin-top: 2rem;
+    }
+    .social-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--beige);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--espresso);
+      font-size: 1.1rem;
+      transition: background .2s, color .2s, transform .2s;
+    }
+    .social-btn:hover { background: var(--orange); color: #fff; transform: scale(1.1); }
+    /* Map wrapper */
+    .map-wrapper {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-warm);
+      height: 100%;
+      min-height: 400px;
+    }
+    .map-wrapper iframe {
+      width: 100%; height: 100%;
+      border: 0;
+      display: block;
+      min-height: 400px;
+    }
+
+    /* ===========================
+       CTA BANNER
+    =========================== */
+    #cta-banner {
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--caramel) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    #cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .cta-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: .75rem;
+    }
+    .cta-inner p {
+      color: rgba(255,255,255,.85);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+      background: #fff;
+      color: var(--orange);
+      font-weight: 600;
+    }
+    .btn-white:hover {
+      background: var(--cream);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0,0,0,.15);
+    }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    footer {
+      background: var(--espresso);
+      color: rgba(255,255,255,.7);
+      padding: 3rem 2rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      margin-bottom: 2rem;
+    }
+    .footer-brand .nav-logo-text {
+      color: #fff;
+      font-size: 1.5rem;
+      margin-bottom: .75rem;
+    }
+    .footer-brand p {
+      font-size: .9rem;
+      line-height: 1.7;
+      max-width: 280px;
+      margin-bottom: 1.5rem;
+    }
+    .footer-col h5 {
+      font-weight: 600;
+      font-size: .95rem;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .footer-col ul li {
+      margin-bottom: .55rem;
+    }
+    .footer-col ul li a {
+      font-size: .9rem;
+      color: rgba(255,255,255,.6);
+      transition: color .2s;
+    }
+    .footer-col ul li a:hover { color: var(--peach); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .85rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom a { color: var(--peach); }
+    .footer-bottom a:hover { text-decoration: underline; }
+
+    /* ===========================
+       WHATSAPP FLOAT BUTTON
+    =========================== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: .6rem;
+    }
+    .whatsapp-float .wa-tooltip {
+      background: var(--espresso);
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 500;
+      padding: .5rem 1rem;
+      border-radius: 8px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: opacity .3s, transform .3s;
+      pointer-events: none;
+    }
+    .whatsapp-float:hover .wa-tooltip {
+      opacity: 1;
+      transform: none;
+    }
+    .whatsapp-float .wa-btn {
+      width: 60px; height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 1.8rem;
+      box-shadow: 0 6px 24px rgba(37,211,102,.5);
+      animation: waPulse 2.5s ease-in-out infinite;
+      transition: transform .2s;
+    }
+    .whatsapp-float .wa-btn:hover { transform: scale(1.1); }
+    @keyframes waPulse {
+      0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,.5); }
+      50%       { box-shadow: 0 6px 40px rgba(37,211,102,.7), 0 0 0 12px rgba(37,211,102,.1); }
+    }
+
+    /* ===========================
+       BACK TO TOP
+    =========================== */
+    #back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      z-index: 500;
+      width: 44px; height: 44px;
+      background: var(--espresso);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .3s, transform .3s;
+      box-shadow: var(--shadow-card);
+    }
+    #back-to-top.visible { opacity: 1; transform: none; }
+    #back-to-top:hover { background: var(--orange); }
+
+    /* ===========================
+       RESPONSIVE BREAKPOINTS
+    =========================== */
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-image-stack { height: 380px; }
+      .menu-featured { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+      .hero-image-wrapper { width: 100%; opacity: .3; }
+      .hero-image-overlay { background: linear-gradient(180deg, rgba(44,26,14,.8) 0%, rgba(44,26,14,.6) 100%); }
+      .hero-content { padding: 7rem 1.5rem 4rem; }
+      .hero-badges { display: none; }
+      .about-image-stack { height: 300px; }
+      .about-badge-float { display: none; }
+      .menu-featured { grid-template-columns: 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 200px);
+      }
+      .gallery-item:nth-child(1), .gallery-item:nth-child(4) { grid-row: auto; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .steam-container { display: none; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .gallery-item { height: 220px; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 2.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====================================
+       NAVBAR
+  ==================================== -->
+  <nav id="navbar" aria-label="Navegación principal">
+    <a href="#hero" class="nav-logo" aria-label="Café Aroma Vivo - Inicio">
+      <div class="logo-icon" aria-hidden="true">☕</div>
+      <div class="nav-logo-text">
+        Café Aroma Vivo
+        <span>Cafetería Artesanal</span>
+      </div>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#about">Nosotros</a></li>
+      <li><a href="#menu">Menú</a></li>
+      <li><a href="#gallery">Galería</a></li>
+      <li><a href="#testimonials">Reseñas</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="https://wa.me/5256234981" target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm" aria-label="Contactar por WhatsApp" style="padding:.6rem 1.2rem;font-size:.88rem;">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
+      </a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Menú de navegación móvil">
+    <button class="close-btn" id="close-menu" aria-label="Cerrar menú">
+      <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+    <nav>
+      <a href="#about"        onclick="closeMobileMenu()">Nosotros</a>
+      <a href="#menu"         onclick="closeMobileMenu()">Menú</a>
+      <a href="#gallery"      onclick="closeMobileMenu()">Galería</a>
+      <a href="#testimonials" onclick="closeMobileMenu()">Reseñas</a>
+      <a href="#contact"      onclick="closeMobileMenu()">Contacto</a>
+    </nav>
+    <a href="https://wa.me/5256234981" target="_blank" rel="noopener" class="btn btn-whatsapp" onclick="closeMobileMenu()">
+      <i class="fab fa-whatsapp" aria-hidden="true"></i> Escríbenos
+    </a>
+  </div>
+
+  <!-- ====================================
+       HERO SECTION
+  ==================================== -->
+  <section id="hero" aria-label="Bienvenida">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-ring" aria-hidden="true"></div>
+
+    <div class="hero-image-wrapper" aria-hidden="true">
+      <!-- Using a high-quality Unsplash coffee photo -->
+      <img
+        src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&q=80&auto=format&fit=crop"
+        alt=""
+        loading="eager"
+      />
+      <div class="hero-image-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-tag reveal">
+        <i class="fas fa-leaf" aria-hidden="true"></i>
+        100% Café Artesanal
+      </div>
+
+      <h1 class="hero-title reveal d1">
+        Café <em>Aroma</em><br>Vivo
+      </h1>
+
+      <p class="hero-slogan reveal d2">✦ El sabor que despierta tus sentidos ✦</p>
+
+      <p class="hero-desc reveal d3">
+        Descubre nuestra selección de cafés de especialidad, frappés artesanales y postres caseros en un ambiente acogedor y lleno de vida.
+      </p>
+
+      <div class="hero-actions reveal d4">
+        <a href="#menu" class="btn btn-primary">
+          <i class="fas fa-coffee" aria-hidden="true"></i> Ver Menú
+        </a>
+        <a href="https://wa.me/5256234981" target="_blank" rel="noopener" class="btn btn-whatsapp">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i> Pide ahora
+        </a>
+      </div>
+
+      <div class="hero-badges reveal d5" aria-label="Características destacadas">
+        <div class="hero-badge">
+          <div class="badge-icon" aria-hidden="true"><i class="fas fa-award"></i></div>
+          <span>Café de especialidad</span>
+        </div>
+        <div class="hero-badge">
+          <div class="badge-icon" aria-hidden="true"><i class="fas fa-heart"></i></div>
+          <span>Hecho con amor</span>
+        </div>
+        <div class="hero-badge">
+          <div class="badge-icon" aria-hidden="true"><i class="fas fa-wifi"></i></div>
+          <span>WiFi gratis</span>
+        </div>
+        <div class="hero-badge">
+          <div class="badge-icon" aria-hidden="true"><i class="fas fa-star"></i></div>
+          <span>+500 clientes felices</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Steam decoration -->
+    <div class="steam-container" aria-hidden="true">
+      <div class="steam"></div>
+      <div class="steam"></div>
+      <div class="steam"></div>
+    </div>
+  </section>
+
+  <!-- ====================================
+       MARQUEE STRIP
+  ==================================== -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <!-- items duplicated for seamless loop -->
+      <span class="marquee-item">☕ Café Artesanal <span class="dot"></span></span>
+      <span class="marquee-item">🥐 Pan Fresco Diario <span class="dot"></span></span>
+      <span class="marquee-item">🧋 Frappés Especiales <span class="dot"></span></span>
+      <span class="marquee-item">🍮 Postres Caseros <span class="dot"></span></span>
+      <span class="marquee-item">🍵 Bebidas de Temporada <span class="dot"></span></span>
+      <span class="marquee-item">📶 WiFi Gratis <span class="dot"></span></span>
+      <span class="marquee-item">🌿 Ambiente Acogedor <span class="dot"></span></span>
+      <span class="marquee-item">☕ Café Artesanal <span class="dot"></span></span>
+      <span class="marquee-item">🥐 Pan Fresco Diario <span class="dot"></span></span>
+      <span class="marquee-item">🧋 Frappés Especiales <span class="dot"></span></span>
+      <span class="marquee-item">🍮 Postres Caseros <span class="dot"></span></span>
+      <span class="marquee-item">🍵 Bebidas de Temporada <span class="dot"></span></span>
+      <span class="marquee-item">📶 WiFi Gratis <span class="dot"></span></span>
+      <span class="marquee-item">🌿 Ambiente Acogedor <span class="dot"></span></span>
+    </div>
+  </div>
+
+  <!-- ====================================
+       ABOUT SECTION
+  ==================================== -->
+  <section id="about" aria-labelledby="about-title">
+    <div class="about-grid" style="max-width:1240px;margin:0 auto;padding:6rem 2rem;">
+
+      <div class="about-image-stack reveal-left">
+        <img
+          class="about-img-main"
+          src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&q=80&auto=format&fit=crop"
+          alt="Interior acogedor de Café Aroma Vivo"
+          loading="lazy"
+        />
+        <img
+          class="about-img-accent"
+          src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80&auto=format&fit=crop"
+          alt="Barista preparando café artesanal"
+          loading="lazy"
+        />
+        <div class="about-badge-float" aria-label="Más de 3 años de experiencia">
+          <div class="num">+3</div>
+          <div class="label">Años<br>de café</div>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <span class="section-tag reveal">Nuestra historia</span>
+        <h2 class="section-title reveal d1" id="about-title">
+          Un lugar donde<br>cada taza<br>cuenta una historia
+        </h2>
+        <p class="section-subtitle reveal d2" style="margin-top:1rem;">
+          Café Aroma Vivo nació del sueño de crear un espacio donde la calidad, el sabor y la calidez humana se encontraran en cada sorbo. Somos una cafetería artesanal comprometida con el café de origen, los postres hechos en casa y un ambiente que inspira.
+        </p>
+
+        <div class="about-features">
+          <div class="about-feature reveal d2">
+            <div class="feature-icon"><i class="fas fa-seedling" aria-hidden="true"></i></div>
+            <div class="feature-text">
+              <h4>Granos de origen único</h4>
+              <p>Trabajamos directamente con pequeños productores para traerte café fresco y de alta calidad en cada preparación.</p>
+            </div>
+          </div>
+          <div class="about-feature reveal d3">
+            <div class="feature-icon"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i></div>
+            <div class="feature-text">
+              <h4>Preparado con amor</h4>
+              <p>Nuestros baristas son apasionados del café. Cada bebida es un pequeño ritual de precisión y creatividad.</p>
+            </div>
+          </div>
+          <div class="about-feature reveal d4">
+            <div class="feature-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+            <div class="feature-text">
+              <h4>Espacio para todos</h4>
+              <p>Estudiantes, freelancers, amigos y familias: todos encuentran su lugar en Café Aroma Vivo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================
+       MENU SECTION
+  ==================================== -->
+  <section id="menu" aria-labelledby="menu-title">
+    <div class="menu-inner">
+      <div class="menu-header">
+        <span class="section-tag reveal">Nuestro menú</span>
+        <h2 class="section-title reveal d1" id="menu-title">Lo que tenemos para ti</h2>
+        <p class="section-subtitle reveal d2" style="margin-top:.75rem;">
+          Desde el espresso clásico hasta nuestras creaciones especiales de temporada, cada opción es una experiencia única.
+        </p>
+      </div>
+
+      <!-- Featured 3 products -->
+      <div class="menu-featured" aria-label="Productos destacados">
+
+        <article class="menu-card featured reveal d1">
+          <div class="card-image">
+            <img
+              src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80&auto=format&fit=crop"
+              alt="Café artesanal en Café Aroma Vivo"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-body">
+            <div class="card-icon" aria-hidden="true">☕</div>
+            <h3 class="card-name">Café Artesanal</h3>
+            <p class="card-desc">Preparado con granos de origen único, tostados y molidos en el momento para lograr el sabor perfecto. Disponible en espresso, americano y más.</p>
+            <div class="card-footer">
+              <span class="card-price">$45</span>
+              <button class="card-add" aria-label="Agregar café artesanal al pedido" onclick="openWhatsApp('Café Artesanal')">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card featured reveal d2">
+          <div class="card-image">
+            <img
+              src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&q=80&auto=format&fit=crop"
+              alt="Frappé especial de Café Aroma Vivo"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-body">
+            <div class="card-icon" aria-hidden="true">🧋</div>
+            <h3 class="card-name">Frappés Especiales</h3>
+            <p class="card-desc">Cremosos, fríos y llenos de sabor. Nuestros frappés son la combinación perfecta de café, leche y un toque de magia artesanal.</p>
+            <div class="card-footer">
+              <span class="card-price">$75</span>
+              <button class="card-add" aria-label="Agregar frappé al pedido" onclick="openWhatsApp('Frappé Especial')">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card featured reveal d3">
+          <div class="card-image">
+            <img
+              src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=600&q=80&auto=format&fit=crop"
+              alt="Postres caseros de Café Aroma Vivo"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-body">
+            <div class="card-icon" aria-hidden="true">🍮</div>
+            <h3 class="card-name">Postres Caseros</h3>
+            <p class="card-desc">Elaborados diariamente en nuestra cocina con ingredientes naturales y recetas tradicionales. El complemento perfecto para tu café.</p>
+            <div class="card-footer">
+              <span class="card-price">$55</span>
+              <button class="card-add" aria-label="Agregar postre al pedido" onclick="openWhatsApp('Postre Casero')">+</button>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /menu-featured -->
+
+      <!-- Other items -->
+      <div class="menu-grid" aria-label="Más productos">
+
+        <div class="menu-item-sm reveal d1">
+          <div class="item-emoji" aria-hidden="true">☕</div>
+          <div class="item-info">
+            <h4>Espresso</h4>
+            <p>Intenso y concentrado · desde $35</p>
+          </div>
+        </div>
+
+        <div class="menu-item-sm reveal d2">
+          <div class="item-emoji" aria-hidden="true">🥛</div>
+          <div class="item-info">
+            <h4>Cappuccino</h4>
+            <p>Suave y espumoso · desde $55</p>
+          </div>
+        </div>
+
+        <div class="menu-item-sm reveal d3">
+          <div class="item-emoji" aria-hidden="true">🍵</div>
+          <div class="item-info">
+            <h4>Latte</h4>
+            <p>Cremoso y equilibrado · desde $60</p>
+          </div>
+        </div>
+
+        <div class="menu-item-sm reveal d4">
+          <div class="item-emoji" aria-hidden="true">🧊</div>
+          <div class="item-info">
+            <h4>Café Frío</h4>
+            <p>Refrescante y aromático · desde $65</p>
+          </div>
+        </div>
+
+        <div class="menu-item-sm reveal d1">
+          <div class="item-emoji" aria-hidden="true">🥐</div>
+          <div class="item-info">
+            <h4>Pan Artesanal</h4>
+            <p>Horneado cada mañana · desde $30</p>
+          </div>
+        </div>
+
+        <div class="menu-item-sm reveal d2">
+          <div class="item-emoji" aria-hidden="true">🌸</div>
+          <div class="item-info">
+            <h4>Bebidas de Temporada</h4>
+            <p>Sabores únicos de la estación · desde $70</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================
+       GALLERY SECTION
+  ==================================== -->
+  <section id="gallery" aria-labelledby="gallery-title">
+    <div class="gallery-header">
+      <span class="section-tag reveal">Nuestra galería</span>
+      <h2 class="section-title reveal d1" id="gallery-title">Un vistazo a Aroma Vivo</h2>
+      <p class="section-subtitle reveal d2">
+        Cada rincón de nuestra cafetería está diseñado para hacerte sentir en casa. Ven y crea tus propios momentos.
+      </p>
+    </div>
+
+    <div class="gallery-grid" role="list" aria-label="Galería de imágenes">
+
+      <div class="gallery-item reveal d1" role="listitem" onclick="openLightbox(this)" tabindex="0" aria-label="Ver imagen de café">
+        <img
+          src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=700&q=80&auto=format&fit=crop"
+          alt="Barista preparando latte art en Café Aroma Vivo"
+          loading="lazy"
+        />
+        <div class="overlay"><i class="fas fa-expand" aria-hidden="true"></i></div>
+      </div>
+
+      <div class="gallery-item reveal d2" role="listitem" onclick="openLightbox(this)" tabindex="0" aria-label="Ver imagen del interior">
+        <img
+          src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=700&q=80&auto=format&fit=crop"
+          alt="Interior acogedor de la cafetería"
+          loading="lazy"
+        />
+        <div class="overlay"><i class="fas fa-expand" aria-hidden="true"></i></div>
+      </div>
+
+      <div class="gallery-item reveal d3" role="listitem" onclick="openLightbox(this)" tabindex="0" aria-label="Ver imagen de postre">
+        <img
+          src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=700&q=80&auto=format&fit=crop"
+          alt="Postre casero con café"
+          loading="lazy"
+        />
+        <div class="overlay"><i class="fas fa-expand" aria-hidden="true"></i></div>
+      </div>
+
+      <div class="gallery-item reveal d4" role="listitem" onclick="openLightbox(this)" tabindex="0" aria-label="Ver imagen de frappé">
+        <img
+          src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=700&q=80&auto=format&fit=crop"
+          alt="Frappé artesanal helado"
+          loading="lazy"
+        />
+        <div class="overlay"><i class="fas fa-expand" aria-hidden="true"></i></div>
+      </div>
+
+      <div class="gallery-item reveal d2" role="listitem" onclick="openLightbox(this)" tabindex="0" aria-label="Ver imagen de café espresso">
+        <img
+          src="https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?w=700&q=80&auto=format&fit=crop"
+          alt="Taza de espresso con crema perfecta"
+          loading="lazy"
+        />
+        <div class="overlay"><i class="fas fa-expand" aria-hidden="true"></i></div>
+      </div>
+
+      <div class="gallery-item reveal d3" role="listitem" onclick="openLightbox(this)" tabindex="0" aria-label="Ver imagen del ambiente">
+        <img
+          src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=700&q=80&auto=format&fit=crop"
+          alt="Ambiente de la cafetería"
+          loading="lazy"
+        />
+        <div class="overlay"><i class="fas fa-expand" aria-hidden="true"></i></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar imagen">
+      <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+    <img id="lightbox-img" src="" alt="Imagen ampliada" onclick="event.stopPropagation()" />
+  </div>
+
+  <!-- ====================================
+       TESTIMONIALS SECTION
+  ==================================== -->
+  <section id="testimonials" aria-labelledby="testi-title">
+    <div class="testimonials-inner">
+      <div class="testimonials-header">
+        <span class="section-tag reveal">Lo que dicen nuestros clientes</span>
+        <h2 class="section-title reveal d1" id="testi-title">Opiniones que nos llenan de orgullo</h2>
+        <p class="section-subtitle reveal d2">Más de 500 clientes satisfechos que vuelven por su café favorito.</p>
+      </div>
+
+      <div class="testimonials-grid" aria-label="Testimonios de clientes">
+
+        <article class="testi-card reveal d1">
+          <div class="testi-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p class="testi-text">"El mejor cappuccino que he probado en la CDMX. El ambiente es increíble para trabajar y estudiar. Definitivamente mi cafetería favorita, ¡vengo casi todos los días!"</p>
+          <div class="testi-author">
+            <img
+              class="testi-avatar"
+              src="https://i.pravatar.cc/80?img=47"
+              alt="Foto de Daniela Mora"
+              loading="lazy"
+            />
+            <div>
+              <div class="testi-name">Daniela Mora</div>
+              <div class="testi-role">Diseñadora freelance</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testi-card reveal d2">
+          <div class="testi-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p class="testi-text">"Los frappés son una locura de deliciosos. Probé el de caramelo y cafeína y ya no pude dejar de pedirlo. El trato del personal es super amable y cálido."</p>
+          <div class="testi-author">
+            <img
+              class="testi-avatar"
+              src="https://i.pravatar.cc/80?img=12"
+              alt="Foto de Carlos Espinoza"
+              loading="lazy"
+            />
+            <div>
+              <div class="testi-name">Carlos Espinoza</div>
+              <div class="testi-role">Estudiante universitario</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testi-card reveal d3">
+          <div class="testi-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p class="testi-text">"Los postres caseros son increíbles. El pastel de queso con café es mi debilidad total. El lugar es muy cómodo y tiene muy buena vibra para reunirse con amigos."</p>
+          <div class="testi-author">
+            <img
+              class="testi-avatar"
+              src="https://i.pravatar.cc/80?img=25"
+              alt="Foto de Sofía Ramírez"
+              loading="lazy"
+            />
+            <div>
+              <div class="testi-name">Sofía Ramírez</div>
+              <div class="testi-role">Bloguera de lifestyle</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testi-card reveal d2">
+          <div class="testi-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p class="testi-text">"Encontré mi lugar de trabajo favorito. WiFi rápido, enchufes en cada mesa y el mejor café de la zona. Ya llevo 6 meses viniendo cada mañana y sigo igual de enamorado del lugar."</p>
+          <div class="testi-author">
+            <img
+              class="testi-avatar"
+              src="https://i.pravatar.cc/80?img=33"
+              alt="Foto de Miguel Ángel Torres"
+              loading="lazy"
+            />
+            <div>
+              <div class="testi-name">Miguel Ángel Torres</div>
+              <div class="testi-role">Desarrollador web</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testi-card reveal d3">
+          <div class="testi-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p class="testi-text">"La bebida de temporada de lavanda y vainilla fue una revelación. Nunca había tomado algo tan especial. Todo el menú es una aventura de sabores que vale la pena explorar."</p>
+          <div class="testi-author">
+            <img
+              class="testi-avatar"
+              src="https://i.pravatar.cc/80?img=54"
+              alt="Foto de Valentina Cruz"
+              loading="lazy"
+            />
+            <div>
+              <div class="testi-name">Valentina Cruz</div>
+              <div class="testi-role">Barista aficionada</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testi-card reveal d4">
+          <div class="testi-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p class="testi-text">"Vine a una reunión de trabajo y todos quedaron impresionados con el lugar. El pan artesanal recién horneado fue el gran protagonista. Regresamos la semana siguiente en familia."</p>
+          <div class="testi-author">
+            <img
+              class="testi-avatar"
+              src="https://i.pravatar.cc/80?img=60"
+              alt="Foto de Roberto Fuentes"
+              loading="lazy"
+            />
+            <div>
+              <div class="testi-name">Roberto Fuentes</div>
+              <div class="testi-role">Gerente de marketing</div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================
+       CONTACT SECTION
+  ==================================== -->
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="contact-grid">
+
+      <div class="contact-info">
+        <span class="section-tag reveal">Encuéntranos</span>
+        <h2 class="section-title reveal d1" id="contact-title">Visítanos y<br>vive la experiencia</h2>
+        <p class="section-subtitle reveal d2" style="margin-top:.75rem;">
+          Estamos esperándote en el corazón de la ciudad. Ven a tomarte un café o escríbenos por WhatsApp.
+        </p>
+
+        <div class="contact-cards reveal d3">
+
+          <div class="contact-card">
+            <div class="contact-card-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></div>
+            <div class="contact-card-info">
+              <h4>WhatsApp</h4>
+              <a href="https://wa.me/5256234981" target="_blank" rel="noopener" aria-label="Enviar mensaje por WhatsApp">+52 55 6234 9812</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
+            <div class="contact-card-info">
+              <h4>Dirección</h4>
+              <p>Av. Universidad 120,<br>Ciudad de México, CDMX</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
+            <div class="contact-card-info">
+              <h4>Horarios de atención</h4>
+              <table class="schedule-table" aria-label="Horarios">
+                <tr><td class="day">Lun – Vie</td><td class="time">7:00 AM – 9:00 PM</td></tr>
+                <tr><td class="day">Sábado</td><td class="time">8:00 AM – 10:00 PM</td></tr>
+                <tr><td class="day">Domingo</td><td class="time">8:00 AM – 8:00 PM</td></tr>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Social links -->
+        <div class="social-row reveal d4" aria-label="Redes sociales">
+          <a
+            href="https://instagram.com/cafearomavivo"
+            target="_blank" rel="noopener"
+            class="social-btn"
+            aria-label="Instagram de Café Aroma Vivo"
+          ><i class="fab fa-instagram" aria-hidden="true"></i></a>
+          <a
+            href="https://facebook.com/cafearomavivo"
+            target="_blank" rel="noopener"
+            class="social-btn"
+            aria-label="Facebook de Café Aroma Vivo"
+          ><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+          <a
+            href="https://tiktok.com/@cafearomavivo"
+            target="_blank" rel="noopener"
+            class="social-btn"
+            aria-label="TikTok de Café Aroma Vivo"
+          ><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+          <a
+            href="https://wa.me/5256234981"
+            target="_blank" rel="noopener"
+            class="social-btn"
+            aria-label="WhatsApp de Café Aroma Vivo"
+          ><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="map-wrapper reveal-right" id="map-section">
+        <iframe
+          title="Ubicación de Café Aroma Vivo en Google Maps"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.0!2d-99.188!3d19.332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce003a3cf8f3e1%3A0xa30dbe7b3f0d94b1!2sAv.%20Universidad%2C%20Ciudad%20de%20M%C3%A9xico!5e0!3m2!1ses-419!2smx!4v1234567890"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================
+       CTA BANNER
+  ==================================== -->
+  <section id="cta-banner" aria-labelledby="cta-title">
+    <div class="cta-inner">
+      <h2 class="reveal" id="cta-title">¿Listo para tu próximo café favorito?</h2>
+      <p class="reveal d1">Escríbenos por WhatsApp o visítanos hoy. Tu próxima taza perfecta te espera.</p>
+      <div class="cta-buttons reveal d2">
+        <a href="https://wa.me/5256234981" target="_blank" rel="noopener" class="btn btn-white">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i> Escríbenos ahora
+        </a>
+        <a href="#menu" class="btn btn-outline" style="border-color:#fff;color:#fff;">
+          <i class="fas fa-book-open" aria-hidden="true"></i> Ver menú completo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================
+       FOOTER
+  ==================================== -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo" aria-label="Café Aroma Vivo">
+            <div class="logo-icon" aria-hidden="true">☕</div>
+            <div class="nav-logo-text">
+              Café Aroma Vivo
+              <span>Cafetería Artesanal</span>
+            </div>
+          </a>
+          <p style="margin-top:.75rem;">
+            Café artesanal de especialidad en el corazón de la Ciudad de México. Un espacio para conectar, crear y disfrutar.
+          </p>
+          <div class="social-row" aria-label="Redes sociales en el pie de página">
+            <a href="https://instagram.com/cafearomavivo" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://facebook.com/cafearomavivo"  target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="https://tiktok.com/@cafearomavivo"   target="_blank" rel="noopener" class="social-btn" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Navegación</h5>
+          <ul>
+            <li><a href="#hero">Inicio</a></li>
+            <li><a href="#about">Nosotros</a></li>
+            <li><a href="#menu">Menú</a></li>
+            <li><a href="#gallery">Galería</a></li>
+            <li><a href="#testimonials">Reseñas</a></li>
+            <li><a href="#contact">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contacto</h5>
+          <ul>
+            <li><a href="tel:+525562349812">+52 55 6234 9812</a></li>
+            <li><a href="https://wa.me/5256234981" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="#">Av. Universidad 120, CDMX</a></li>
+            <li><a href="https://instagram.com/cafearomavivo" target="_blank" rel="noopener">@cafearomavivo</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Café Aroma Vivo · Todos los derechos reservados</p>
+        <p>Hecho con ❤️ y mucho ☕ en CDMX</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================
+       FLOATING WHATSAPP BUTTON
+  ==================================== -->
+  <div class="whatsapp-float" aria-label="Botón flotante de WhatsApp">
+    <div class="wa-tooltip">¡Escríbenos!</div>
+    <a
+      href="https://wa.me/5256234981"
+      target="_blank"
+      rel="noopener"
+      class="wa-btn"
+      aria-label="Contactar por WhatsApp: +52 55 6234 9812"
+    >
+      <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <!-- Back to top -->
+  <button id="back-to-top" aria-label="Volver al inicio" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-chevron-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- ====================================
+       JAVASCRIPT
+  ==================================== -->
+  <script>
+    /* --- Navbar scroll effect --- */
+    const navbar = document.getElementById('navbar');
+    const backToTop = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        navbar.classList.add('scrolled');
+        backToTop.classList.add('visible');
+      } else {
+        navbar.classList.remove('scrolled');
+        backToTop.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    /* --- Hamburger / mobile menu --- */
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    /* Close mobile menu on outside click */
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) closeMobileMenu();
+    });
+
+    /* --- Intersection Observer for scroll reveals --- */
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    /* --- Lightbox --- */
+    const lightbox    = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openLightbox(el) {
+      const img = el.querySelector('img');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    /* Keyboard support for gallery items */
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(item);
+        }
+      });
+    });
+
+    /* Close lightbox on Escape key */
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    /* --- WhatsApp order helper --- */
+    function openWhatsApp(product) {
+      const msg = encodeURIComponent(`¡Hola! Me gustaría ordenar: ${product}`);
+      window.open(`https://wa.me/5256234981?text=${msg}`, '_blank', 'noopener');
+    }
+
+    /* --- Smooth active link highlighting --- */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks  = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--orange)' : '';
+      });
+    }, { passive: true });
+
+    /* --- Trigger reveals that are already in viewport on load --- */
+    setTimeout(() => {
+      revealEls.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          el.classList.add('visible');
+          observer.unobserve(el);
+        }
+      });
+    }, 100);
+  </script>
+
+</body>
+</html>
